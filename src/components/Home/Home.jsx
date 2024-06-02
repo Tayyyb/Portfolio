@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import About from "../About/About";
 import Contact from "../Contact/Contact";
 import Services from "../Services/Services";
@@ -11,19 +12,26 @@ function Home() {
   };
 
   const handleDownloadCV = () => {
-    // Replace 'path/to/your/cv.pdf' with the actual path to your CV file
     const cvUrl = '/src/images/MERNS.Resume.pdf';
     window.open(cvUrl, '_blank');
   };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-500 p-4 text-black">
-      <div className="max-w-4xl w-full overflow-hidden flex flex-col md:flex-row">
+      <motion.div 
+        className="max-w-4xl w-full overflow-hidden flex flex-col md:flex-row"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
         <div className="md:w-1/2 flex justify-center items-center order-1 md:order-2">
-          <img
+          <motion.img
             src="/src/images/IMG_20230804_151722.jpg"
             alt="Profile"
-            className="w-48 h-48 md:w-80 md:h-80 object-cover object-top  object-center rounded-full md:rounded-4xl"
+            className="w-48 h-48 md:w-80 md:h-80 object-cover object-top object-center rounded-full md:rounded-4xl"
+            initial={{ y: -100 }}
+            animate={{ y: 0 }}
+            transition={{ duration: 1 }}
           />
         </div>
         <div className="md:w-1/2 p-6 order-2 md:order-1">
@@ -51,17 +59,48 @@ function Home() {
             </div>
           </div>
         </div>
-      </div>
-      <div>
-        {" "}
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
         <About />
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.2 }}
+      >
         <Skills />
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.4 }}
+      >
         <Services />
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.6 }}
+      >
         <Portfolio />
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.8 }}
+      >
         <Contact />
-      </div>
+      </motion.div>
     </div>
-    
   );
 }
 
